@@ -7,9 +7,9 @@ export type LinkItem = {
 };
 
 export const profile = {
-  name: "김클로",
-  bio: "세계 최강 바이브코더",
-  avatarUrl: "/avatar-placeholder.svg",
+  name: "김개발",
+  bio: "풀스택 개발자 | 요즘 AI 개발에 관심이 많아요",
+  avatarUrl: "https://placehold.co/150x150/orange/white",
 };
 
 export const links: LinkItem[] = [

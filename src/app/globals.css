@@ -3,5 +3,35 @@
 @tailwind utilities;
 
 body {
-  font-family: var(--font-geist-sans), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  min-height: 100vh;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  background-color: #fdf4ec;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 따뜻한 톤의 부드러운 그라데이션 배경 (스크롤해도 고정) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 12% 8%, #ffd8bf 0%, transparent 70%),
+    radial-gradient(55% 40% at 92% 22%, #ffe2cc 0%, transparent 70%),
+    radial-gradient(70% 50% at 50% 105%, #fbd0d4 0%, transparent 70%),
+    linear-gradient(165deg, #fff8f1 0%, #fdeee4 55%, #fbe6e0 100%);
+}
+
+.dark body {
+  background-color: #1a1311;
+}
+
+.dark body::before {
+  background:
+    radial-gradient(60% 45% at 12% 8%, #4a2a1e 0%, transparent 70%),
+    radial-gradient(55% 40% at 92% 22%, #3d2618 0%, transparent 70%),
+    radial-gradient(70% 50% at 50% 105%, #43202a 0%, transparent 70%),
+    linear-gradient(165deg, #1f1714 0%, #1a1311 55%, #1d1215 100%);
 }
