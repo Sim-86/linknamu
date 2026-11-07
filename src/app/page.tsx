@@ -1,5 +1,5 @@
 import Profile from "@/components/Profile";
-import LinkCard from "@/components/LinkCard";
+import LinkList from "@/components/LinkList";
 import ThemeToggle from "@/components/ThemeToggle";
 import { profile, links } from "@/data/profile";
 
@@ -12,13 +12,7 @@ export default function Home() {
       <div className="mt-8 sm:mt-10">
         <Profile {...profile} />
       </div>
-      <ul className="mt-10 flex flex-col gap-3.5">
-        {links.map((link) => (
-          <li key={link.id}>
-            <LinkCard link={link} />
-          </li>
-        ))}
-      </ul>
+      <LinkList links={links} />
     </main>
   );
 }

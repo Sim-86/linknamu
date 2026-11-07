@@ -11,15 +11,20 @@ export async function POST(
     return NextResponse.json({ error: "unknown link" }, { status: 404 });
   }
 
-  const clicks = await getClicksCollection();
-  if (!clicks) {
-    return NextResponse.json({ ok: false, reason: "MONGODB_URI not set" });
-  }
+  try {
+    const clicks = await getClicksCollection();
+    if (!clicks) {
+      return NextResponse.json({ ok: false, reason: "MONGODB_URI not set" });
+    }
 
-  await clicks.updateOne(
-    { _id: params.id },
-    { $inc: { count: 1 } },
-    { upsert: true },
-  );
-  return NextResponse.json({ ok: true });
+    await clicks.updateOne(
+      { _id: params.id },
+      { $inc: { count: 1 } },
+      { upsert: true },
+    );
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error(`[POST /api/clicks/${params.id}]`, err);
+    return NextResponse.json({ ok: false }, { status: 503 });
+  }
 }
